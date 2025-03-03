@@ -7,9 +7,12 @@ import model.entities.Seller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
 
         SellerDao sellerDao = DaoFactory.createSellerDao();
 
@@ -32,16 +35,24 @@ public class Main {
             System.out.println(obj);
         }
 
-        System.out.println("=== TEST 4: seller insert ===");
-        Seller newSeller = new Seller(null, "Diego", "diego@gmail.com", new Date(), 3000.00, department);
-        sellerDao.insert(newSeller);
-        System.out.println("Inserted! New id = " + newSeller.getId());
+//        System.out.println("=== TEST 4: seller insert ===");
+//        Seller newSeller = new Seller(null, "Diego", "diego@gmail.com", new Date(), 3000.00, department);
+//        sellerDao.insert(newSeller);
+//        System.out.println("Inserted! New id = " + newSeller.getId());
 
-        System.out.println("=== TEST 5: seller update ===");
-        seller = sellerDao.findById(1);
-        seller.setName("Bruce Wayne");
-        seller.setBirthDate(seller.getBirthDate());
-        sellerDao.update(seller);
-        System.out.println("Update completed!");
+//        System.out.println("=== TEST 5: seller update ===");
+//        seller = sellerDao.findById(1);
+//        seller.setName("Bruce Wayne");
+//        seller.setBirthDate(seller.getBirthDate());
+//        sellerDao.update(seller);
+//        System.out.println("Update completed!");
+
+        System.out.println("=== TEST 5: seller delete ===");
+        System.out.println("Enter id for delete test: ");
+        int id = input.nextInt();
+        sellerDao.deleteById(id);
+        System.out.println("Deletion completed!");
+        input.close();
+
     }
 }
